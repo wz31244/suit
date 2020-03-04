@@ -6,10 +6,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.suit.apps.MyApp;
 import com.example.suit.interfaces.IBasePresenter;
 import com.example.suit.interfaces.IBaseView;
-import com.example.suit.interfaces.home.HomeContract;
 
 public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatActivity implements IBaseView {
 
@@ -36,7 +34,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
     protected abstract void initData();
 
     @Override
-    public void showTips() {
-        Toast.makeText(this, "welcome", Toast.LENGTH_SHORT).show();
+    public void showTips(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

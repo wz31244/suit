@@ -1,5 +1,5 @@
 package com.example.suit.interfaces;
 
 public interface IBaseView {
-    void showTips();
+    void showTips(String msg);
 }

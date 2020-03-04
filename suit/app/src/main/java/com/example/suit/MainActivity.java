@@ -1,75 +1,93 @@
 package com.example.suit;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.media.DrmInitData;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.model.GlideUrl;
-import com.example.suit.base.BaseActivity;
-import com.example.suit.interfaces.home.HomeContract;
-import com.example.suit.model.apis.HomeBean;
-import com.example.suit.presenter.HomePresenter;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.youth.banner.Banner;
-import com.youth.banner.loader.ImageLoader;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.suit.UI.home_fragments.MainFragment;
+import com.example.suit.UI.home_fragments.TopicFragment;
+import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends BaseActivity<HomeContract.Presenter> implements HomeContract.View {
+public class MainActivity extends AppCompatActivity {
 
-    private Banner mBanner;
-    private List<String> mImages;
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
 
     @Override
-    protected int getLayout() {
-        return R.layout.activity_main;
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initView();
     }
 
-    @Override
-    protected HomeContract.Presenter createPresenter() {
-        return new HomePresenter();
-    }
-
-    @Override
     protected void initView() {
+        //设置标题
+        toolbar = findViewById(R.id.toolBar);
+        toolbar.setTitle("仿网易严选");
+        setSupportActionBar(toolbar);
 
+        tabLayout = findViewById(R.id.tb);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(getCustomView(R.drawable.selector_choice, "首页")));
+        tabLayout.addTab(tabLayout.newTab().setCustomView(getCustomView(R.drawable.selector_topic, "专题")));
+        tabLayout.addTab(tabLayout.newTab().setCustomView(getCustomView(R.drawable.selector_sort, "分类")));
+        tabLayout.addTab(tabLayout.newTab().setCustomView(getCustomView(R.drawable.selector_shopping, "购物车")));
+        tabLayout.addTab(tabLayout.newTab().setCustomView(getCustomView(R.drawable.selector_me, "我的")));
 
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                selectFragment(position);
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) { }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) { }
+        });
+        selectFragment(0);
     }
 
-    @Override
-    protected void initData() {
-        presenter.getItemData();
-    }
-
-    @Override
-    public void getHomeDataReturn(HomeBean result) {
-        Log.i("suit001", "--------主界面接收到数据------");
-        List<HomeBean.DataBean.BannerBean> banners = result.getData().getBanner();
-        List<String> images = new ArrayList<>();
-        for (HomeBean.DataBean.BannerBean banner : banners) {
-            images.add(banner.getImage_url());
+    private void selectFragment(int position) {
+        Fragment fragment = null;
+        if (position == 0) {
+            fragment = new MainFragment();
+        } else if (position == 1) {
+            fragment = new TopicFragment();
+        } else {
+            fragment = new Fragment();
         }
 
-        //详细使用
-        mBanner = (Banner) findViewById(R.id.banner);
-        mBanner.setImages(images);
-        mBanner.setImageLoader(new GlideImageLoader());
-        mBanner.isAutoPlay(true);
-        mBanner.setDelayTime(1500);
-        //banner设置方法全部调用完毕时最后调用
-        mBanner.start();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
     }
 
-    class GlideImageLoader extends ImageLoader {
-        @Override
-        public void displayImage(Context context, Object path, ImageView imageView) {
-            Glide.with(context).load(path).into(imageView);
-        }
+    private View getCustomView(int imageId, String text) {
+        View view = LayoutInflater.from(this).inflate(R.layout.layout_tab, null);
+        ImageView iv_icon = view.findViewById(R.id.iv_icon);
+        TextView tv_text = view.findViewById(R.id.tv_text);
+        iv_icon.setImageResource(imageId);
+        tv_text.setText(text);
+        return view;
     }
+
+
 
 }
 
