@@ -1,15 +1,11 @@
 package com.example.suit.presenter;
 
-import android.util.Log;
-
 import com.example.suit.base.BasePresenter;
 import com.example.suit.common.ResponseSubscriber;
 import com.example.suit.interfaces.home.HomeContract;
 import com.example.suit.model.HttpManager;
 import com.example.suit.model.apis.HomeBean;
 import com.example.suit.utils.RxUtils;
-
-import io.reactivex.subscribers.ResourceSubscriber;
 
 public class HomePresenter extends BasePresenter<HomeContract.View> implements HomeContract.Presenter {
 
@@ -25,6 +21,7 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
                         if (result.getErrno() == 0) {
                             mView.getHomeDataReturn(result);
                         } else {
+                            mView.showTips(result.getErrmsg());
                             super.onNext(result);
                         }
                     }

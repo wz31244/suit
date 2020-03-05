@@ -1,8 +1,5 @@
 package com.example.suit.presenter;
 
-import android.util.Log;
-
-import com.example.suit.UI.home_fragments.TopicFragment;
 import com.example.suit.base.BasePresenter;
 import com.example.suit.common.ResponseSubscriber;
 import com.example.suit.interfaces.home.TopicContract;
@@ -21,6 +18,7 @@ public class TopicPresenter extends BasePresenter<TopicContract.View> implements
                         if (result.getErrno() == 0) {
                             mView.getTopicDataReturn(result);
                         } else {
+                            mView.showTips(result.getErrmsg());
                             super.onNext(result);
                         }
                     }

@@ -1,14 +1,9 @@
 package com.example.suit;
 
-import android.content.Context;
-import android.graphics.Color;
-import android.media.DrmInitData;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -19,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.suit.UI.home_fragments.MainFragment;
+import com.example.suit.UI.home_fragments.ShoppingFragment;
 import com.example.suit.UI.home_fragments.TopicFragment;
 import com.google.android.material.tabs.TabLayout;
 
@@ -38,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         //设置标题
         toolbar = findViewById(R.id.toolBar);
         toolbar.setTitle("仿网易严选");
+        toolbar.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         setSupportActionBar(toolbar);
 
         tabLayout = findViewById(R.id.tb);
@@ -59,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabReselected(TabLayout.Tab tab) { }
         });
-        selectFragment(0);
+        tabLayout.getTabAt(0).select();
     }
 
     private void selectFragment(int position) {
@@ -68,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
             fragment = new MainFragment();
         } else if (position == 1) {
             fragment = new TopicFragment();
+        } else if (position == 3) {//判断登录状态，并跳转登录界面
+            fragment = new ShoppingFragment();
         } else {
             fragment = new Fragment();
         }

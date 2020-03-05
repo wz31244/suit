@@ -19,7 +19,7 @@ public abstract class ResponseSubscriber<T> extends ResourceSubscriber<T> {
     public void onNext(T t) {
         //如果错误码不是0，则执行本方法
         if (view != null) {
-            view.showTips("数据异常");
+            //view.showTips("数据异常");
         }
     }
 
