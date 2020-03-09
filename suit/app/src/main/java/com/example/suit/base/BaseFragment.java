@@ -2,20 +2,18 @@ package com.example.suit.base;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.wifi.aware.PeerHandle;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.suit.interfaces.IBasePresenter;
-import com.example.suit.interfaces.IBaseView;
+import com.example.suit.interfaces.base.IBasePresenter;
+import com.example.suit.interfaces.base.IBaseView;
 
 
 public abstract class BaseFragment<P extends IBasePresenter> extends Fragment implements IBaseView {

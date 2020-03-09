@@ -7,20 +7,25 @@
     <ImageView
         android:id="@+id/iv_topic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"/>
     <TextView
         android:id="@+id/tv_title"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
     <TextView
         android:id="@+id/tv_subtitle"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/lightBlack"
+        android:textSize="14sp"/>
     <TextView
         android:id="@+id/tv_price_info"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"/>
 </LinearLayout>

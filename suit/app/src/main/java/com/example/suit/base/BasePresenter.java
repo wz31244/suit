@@ -1,7 +1,7 @@
 package com.example.suit.base;
 
-import com.example.suit.interfaces.IBasePresenter;
-import com.example.suit.interfaces.IBaseView;
+import com.example.suit.interfaces.base.IBasePresenter;
+import com.example.suit.interfaces.base.IBaseView;
 
 import java.lang.ref.WeakReference;
 

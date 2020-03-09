@@ -1,6 +1,6 @@
 package com.example.suit.common;
 
-import com.example.suit.interfaces.IBaseView;
+import com.example.suit.interfaces.base.IBaseView;
 
 import io.reactivex.subscribers.ResourceSubscriber;
 

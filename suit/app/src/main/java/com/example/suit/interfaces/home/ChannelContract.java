@@ -2,15 +2,15 @@ package com.example.suit.interfaces.home;
 
 import com.example.suit.interfaces.base.IBasePresenter;
 import com.example.suit.interfaces.base.IBaseView;
-import com.example.suit.model.apis.HomeBean;
+import com.example.suit.model.apis.ChannelBean;
 
-public class HomeContract {
+public class ChannelContract {
 
     public interface View extends IBaseView {
-        void getHomeDataReturn(HomeBean result);
+        void getChannelDataReturn(ChannelBean result);
     }
 
     public interface Presenter extends IBasePresenter<View> {
-        void getItemData();
+        void getChannelData();
     }
 }

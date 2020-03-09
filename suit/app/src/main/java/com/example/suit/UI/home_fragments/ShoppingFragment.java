@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.example.suit.R;
 import com.example.suit.UI.login.LoginActivity;
+import com.example.suit.apps.MyApp;
 import com.example.suit.base.BaseFragment;
 import com.example.suit.interfaces.home.ShoppingContract;
 import com.example.suit.model.apis.ShoppingBean;
@@ -22,8 +23,10 @@ public class ShoppingFragment extends BaseFragment<ShoppingContract.Presenter> i
 
     @Override
     public void initView() {
-        Intent intent = new Intent(getActivity(), LoginActivity.class);
-        startActivity(intent);
+        if (MyApp.login == null) {//未登录
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override

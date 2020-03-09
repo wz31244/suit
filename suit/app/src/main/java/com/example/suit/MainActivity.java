@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.suit.UI.home_fragments.MainFragment;
+import com.example.suit.UI.home_fragments.HomeFragment;
 import com.example.suit.UI.home_fragments.ShoppingFragment;
 import com.example.suit.UI.home_fragments.TopicFragment;
 import com.google.android.material.tabs.TabLayout;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private void selectFragment(int position) {
         Fragment fragment = null;
         if (position == 0) {
-            fragment = new MainFragment();
+            fragment = new HomeFragment();
         } else if (position == 1) {
             fragment = new TopicFragment();
         } else if (position == 3) {//判断登录状态，并跳转登录界面

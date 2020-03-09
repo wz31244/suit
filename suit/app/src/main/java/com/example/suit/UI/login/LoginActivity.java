@@ -46,6 +46,8 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
         forgot = findViewById(R.id.forgot);
         container = (ConstraintLayout) findViewById(R.id.container);
 
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);//左侧添加一个默认的返回图标
+
         login.setOnClickListener(this);
         register.setOnClickListener(this);
         forgot.setOnClickListener(this);

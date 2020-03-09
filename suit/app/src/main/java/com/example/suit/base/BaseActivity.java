@@ -6,8 +6,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.suit.interfaces.IBasePresenter;
-import com.example.suit.interfaces.IBaseView;
+import com.example.suit.interfaces.base.IBasePresenter;
+import com.example.suit.interfaces.base.IBaseView;
 
 public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatActivity implements IBaseView {
 
