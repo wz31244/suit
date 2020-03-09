@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.suit.R;
 import com.example.suit.UI.channel.ChannelActivity;
 import com.example.suit.UI.home_fragments.brand.HomeBrandFragment;
+import com.example.suit.UI.home_fragments.newgoods.HomeNewGoodsFragment;
 import com.example.suit.base.BaseFragment;
 import com.example.suit.interfaces.home.HomeContract;
 import com.example.suit.model.apis.HomeBean;
@@ -57,14 +58,17 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
         List<HomeBean.DataBean.BannerBean> bannerList = result.getData().getBanner();
         List<HomeBean.DataBean.ChannelBean> channelList = result.getData().getChannel();
         List<HomeBean.DataBean.BrandListBean> brandList = result.getData().getBrandList();
+        List<HomeBean.DataBean.NewGoodsListBean> newGoods = result.getData().getNewGoodsList();
         setBanner(bannerList);
         setChannel(channelList);
 
         //加载下方的系列列表
-        Fragment brand = getBrand(brandList);
+        Fragment brandFragment = getBrand(brandList);
+        Fragment newGoodsFragment = getNewGoods(newGoods);
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.container_brand, brand);
+        transaction.add(R.id.container_brand, brandFragment);
+        transaction.add(R.id.container_newGoods, newGoodsFragment);
         transaction.commit();
     }
 
@@ -102,8 +106,13 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     }
 
     private Fragment getBrand(List<HomeBean.DataBean.BrandListBean> brandList) {
-        HomeBrandFragment homeBrandFragment = new HomeBrandFragment(brandList);
-        return homeBrandFragment;
+        HomeBrandFragment fragment = new HomeBrandFragment(brandList, "品牌制造商直供");
+        return fragment;
+    }
+
+    private Fragment getNewGoods(List<HomeBean.DataBean.NewGoodsListBean> newGoodsList) {
+        HomeNewGoodsFragment fragment = new HomeNewGoodsFragment(newGoodsList, "周一周四·新品首发");
+        return fragment;
     }
 
     class GlideImageLoader extends ImageLoader {

@@ -11,9 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by caizhiming on 2015/12/29.
- */
 public class XCRecyclerView extends RecyclerView {
 
     private ArrayList<View> mHeaderViews = new ArrayList<>();

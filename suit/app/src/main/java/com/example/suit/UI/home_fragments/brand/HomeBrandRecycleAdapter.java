@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.suit.R;
-import com.example.suit.base.BaseRecycleAdapter;
+import com.example.suit.UI.home_fragments.base.BaseRecycleAdapter;
 import com.example.suit.model.apis.HomeBean;
 
 import java.util.List;

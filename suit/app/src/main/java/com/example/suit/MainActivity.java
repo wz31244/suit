@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabReselected(TabLayout.Tab tab) { }
         });
-        tabLayout.getTabAt(0).select();
+        selectFragment(0);
     }
 
     private void selectFragment(int position) {

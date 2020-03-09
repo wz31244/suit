@@ -48,6 +48,7 @@ public class TopicRecyclerAdapter extends RecyclerView.Adapter<TopicRecyclerAdap
             @Override
             public void onClick(View v) {
                 if (mListener != null) {
+
                     mListener.onItemClick(v, position);
                 }
             }
