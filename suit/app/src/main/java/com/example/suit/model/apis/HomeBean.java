@@ -1,8 +1,9 @@
 package com.example.suit.model.apis;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class HomeBean {
+public class HomeBean implements Serializable {
 
     private int errno;
     private String errmsg;
@@ -290,7 +291,7 @@ public class HomeBean {
             }
         }
 
-        public static class HotGoodsListBean {
+        public static class HotGoodsListBean implements Serializable {
 
             private int id;
             private String name;

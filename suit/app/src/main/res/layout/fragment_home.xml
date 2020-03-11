@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/lightBlackBackground"
-    tools:context="com.example.suit.UI.home_fragments.HomeFragment" >
+    tools:context="com.example.suit.UI.home.HomeFragment" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <com.youth.banner.Banner
@@ -30,6 +30,7 @@
         </HorizontalScrollView>
 
         <LinearLayout
+            android:layout_marginTop="2dp"
             android:id="@+id/container_brand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +42,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
         </LinearLayout>
-
+        <LinearLayout
+            android:layout_marginTop="2dp"
+            android:id="@+id/container_hotGoods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/container_topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/container_hot_again"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
     </LinearLayout>
-
 </ScrollView>

@@ -13,9 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.suit.UI.home_fragments.HomeFragment;
-import com.example.suit.UI.home_fragments.ShoppingFragment;
-import com.example.suit.UI.home_fragments.TopicFragment;
+import com.example.suit.UI.home.HomeFragment;
+import com.example.suit.UI.home.ShoppingFragment;
+import com.example.suit.UI.home.TopicFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         //设置标题
         toolbar = findViewById(R.id.toolBar);
         toolbar.setTitle("仿网易严选");
-        toolbar.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         setSupportActionBar(toolbar);
 
         tabLayout = findViewById(R.id.tb);
@@ -47,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                selectFragment(position);
+                selectFragment(tab.getPosition());
             }
             @Override
             public void onTabUnselected(TabLayout.Tab tab) { }
@@ -56,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabReselected(TabLayout.Tab tab) { }
         });
+        //默认加载第0个fragment
         selectFragment(0);
     }
 
@@ -64,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         if (position == 0) {
             fragment = new HomeFragment();
         } else if (position == 1) {
+            fragment = new TopicFragment();
+        } else if (position == 2) {
             fragment = new TopicFragment();
         } else if (position == 3) {//判断登录状态，并跳转登录界面
             fragment = new ShoppingFragment();

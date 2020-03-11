@@ -18,7 +18,6 @@ public class ChannelActivity extends BaseActivity<ChannelContract.Presenter> imp
 
     @Override
     protected void initView() {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
